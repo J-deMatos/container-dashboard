@@ -1,0 +1,21 @@
+[Unit]
+Description=Docker Dashboard Updater
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+User=__USER__
+Group=__USER__
+WorkingDirectory=__WORK_DIR__
+ExecStart=/usr/bin/python3 __WORK_DIR__/update_dashboard.py --interval 300 --enable-web --web-port 8070
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Environment variables
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

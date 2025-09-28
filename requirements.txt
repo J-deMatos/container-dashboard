@@ -1,0 +1,14 @@
+# Python requirements for Docker Manager Dashboard
+# Note: On Arch Linux, these packages are installed via pacman instead
+
+# Core Python packages (usually included with Python)
+# No external dependencies required - uses only Python standard library
+
+# Optional packages for enhanced functionality:
+# docker-py  # For advanced Docker API usage (if needed in future)
+# requests   # For HTTP requests (if needed in future)
+# jinja2     # For template rendering (if needed in future)
+
+# Installation:
+# On Arch Linux: pacman -S python-pip python-setuptools
+# On other systems: pip install -r requirements.txt

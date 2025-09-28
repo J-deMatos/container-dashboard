@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated files
+index.html
+test_dashboard.html
+
+# User-specific configs (generated from templates)
+docker-dashboard.service
+nginx.conf
+
+# Arch Linux package files
+PKGBUILD
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.pkg.tar.bz2
+*.pkg.tar.lz4
+*.pkg.tar.lrz
+*.pkg.tar.lzo
+*.pkg.tar.Z
+*.pkg.tar
+*.pkg
+*.src.tar.gz
+*.src.tar.bz2
+*.src.tar.xz
+*.src.tar.lz4
+*.src.tar.lrz
+*.src.tar.lzo
+*.src.tar.Z
+*.src.tar
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
