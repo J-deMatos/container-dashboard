@@ -591,60 +591,62 @@ class DockerManager:
 
     def _generate_javascript(self) -> str:
         """Generate JavaScript for the dashboard"""
-        return """        function showServices(type) {
+        return f"""        const CONFIGURED_HOSTNAME = '{self.config['hostname']}';
+        
+        function showServices(type) {{
             // Update tab states
-            document.querySelectorAll('.status-tab').forEach(tab => {
+            document.querySelectorAll('.status-tab').forEach(tab => {{
                 tab.classList.remove('active');
-            });
+            }});
             event.target.classList.add('active');
             
             // Show/hide services based on type
             const allCards = document.querySelectorAll('.service-card');
-            allCards.forEach(card => {
+            allCards.forEach(card => {{
                 const isRunning = card.querySelector('.status-running');
                 const isStopped = card.querySelector('.status-stopped');
                 
-                if (type === 'all') {
+                if (type === 'all') {{
                     card.style.display = 'block';
-                } else if (type === 'running' && isRunning) {
+                }} else if (type === 'running' && isRunning) {{
                     card.style.display = 'block';
-                } else if (type === 'stopped' && isStopped) {
+                }} else if (type === 'stopped' && isStopped) {{
                     card.style.display = 'block';
-                } else {
+                }} else {{
                     card.style.display = 'none';
-                }
-            });
-        }
+                }}
+            }});
+        }}
         
-        function toggleProtocol() {
+        function toggleProtocol() {{
             const btn = document.getElementById('protocol-btn');
             const text = document.getElementById('protocol-text');
             const allCards = document.querySelectorAll('.service-card');
             
-            if (text.textContent === 'HTTP') {
+            if (text.textContent === 'HTTP') {{
                 text.textContent = 'HTTPS';
                 btn.classList.add('active');
                 
                 // Update all service card links to HTTPS
-                allCards.forEach(card => {
+                allCards.forEach(card => {{
                     const currentHref = card.getAttribute('href');
-                    if (currentHref && currentHref.startsWith('http://' + window.location.hostname + ':')) {
+                    if (currentHref && currentHref.startsWith('http://' + CONFIGURED_HOSTNAME + ':')) {{
                         card.setAttribute('href', currentHref.replace('http://', 'https://'));
-                    }
-                });
-            } else {
+                    }}
+                }});
+            }} else {{
                 text.textContent = 'HTTP';
                 btn.classList.remove('active');
                 
                 // Update all service card links to HTTP
-                allCards.forEach(card => {
+                allCards.forEach(card => {{
                     const currentHref = card.getAttribute('href');
-                    if (currentHref && currentHref.startsWith('https://' + window.location.hostname + ':')) {
+                    if (currentHref && currentHref.startsWith('https://' + CONFIGURED_HOSTNAME + ':')) {{
                         card.setAttribute('href', currentHref.replace('https://', 'http://'));
-                    }
-                });
-            }
-        }"""
+                    }}
+                }});
+            }}
+        }}"""
 
     def generate_html(self, show_all=True) -> str:
         """Generate the static HTML page"""
